@@ -1,9 +1,10 @@
 <template>
   <nav role="navigation">
     <div class="back_logo">
-      <a  class="back_btn"><i class="bx bx-chevron-left"></i></a>
-      <a ><img src="img/logo.svg" /></a>
-      <a  class="search_btn"><i class="fas fa-search"></i></a>
+      <router-link v-if="current > 0" :to="`/registration/${items[current-1]}`" class="back_btn"><img src="img/backbtn.png"></router-link>
+      <router-link to="/" class="logo"><img src="img/logo.svg" />
+      </router-link>
+      <a class="search_btn"><i class="fas fa-search"></i></a>
     </div>
     <div id="menuToggle">
       <input type="checkbox" />
@@ -11,16 +12,25 @@
       <span></span>
       <span></span>
       <ul id="menu">
-        <li><a >FAQ</a></li>
-        <li><a >Terms of use</a></li>
-        <li><a >Privacy Policy</a></li>
-        <li><a >G-Coin Rewards</a></li>
-        <li><a >Contact Us</a></li>
-        <li><a >Login</a></li>
+        <li><router-link to="/" ><img src="img/icons/FAQ.png">FAQ</router-link></li>
+        <li><router-link to="/" ><img src="img/icons/termofuse.png">Terms of use</router-link></li>
+        <li><router-link to="/" ><img src="img/icons/privacy.png">Privacy Policy</router-link></li>
+        <li><router-link to="/" ><img src="img/icons/coin.png"> G-Coin Rewards</router-link></li>
+        <li><router-link to="/" ><img src="img/icons/contact.png">Contact Us</router-link></li>
+        <li><router-link to="/" ><img src="img/icons/logout.png">Login</router-link></li>
       </ul>
     </div>
   </nav>
 </template>
 <script>
+  export default {
+    props: ['current'],
+    data() {
+      return { items: [
+          'one', 'two', 'three', 'four', 'five', 'six', 'seven'
+        ]
+      }
+    }
+  }
 </script>
-<style></style>
+
